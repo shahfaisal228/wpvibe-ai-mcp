@@ -1,0 +1,8 @@
+{
+  "id": "listfiles-20260919-2137",
+  "action": "list_files",
+  "args": {
+    "scope": "theme",
+    "directory": ""
+  }
+}
