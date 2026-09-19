@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "id": "preview-shoplook-20260919-2201",
+  "action": "preview_draft",
+  "result": {
+    "preview_url": "https://homeglo.com.au/?wpvibe_preview=MreGxdFwktX6ilD94pJSgnP1bQgL3g6M",
+    "draft_slug": "homeglo-atelier-wpvibe-draft"
+  },
+  "completed_at": "2026-09-19T11:51:10.244Z",
+  "bridge_http_status": 200
+}
