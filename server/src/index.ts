@@ -2,8 +2,8 @@ import "dotenv/config";
 import { timingSafeEqual } from "node:crypto";
 import type { NextFunction, Request, Response } from "express";
 import { createMcpExpressApp } from "@modelcontextprotocol/express";
-import { toNodeHandler } from "@modelcontextprotocol/node";
-import { createMcpHandler, McpServer } from "@modelcontextprotocol/server";
+import { NodeStreamableHTTPServerTransport } from "@modelcontextprotocol/node";
+import { McpServer } from "@modelcontextprotocol/server";
 import * as z from "zod/v4";
 import { config } from "./config.js";
 import { WordPressClient } from "./wordpress.js";
@@ -130,7 +130,7 @@ function buildServer(): McpServer {
   server.registerTool(
     "homeglo_create_draft_theme",
     {
-      description: "Clone the live theme into WPVibe's draft sandbox for safe editing.",
+      description: "Clone the live theme into the WordPress draft sandbox for safe editing.",
       annotations: { readOnlyHint: false, destructiveHint: false },
     },
     async () => {
@@ -180,7 +180,8 @@ function buildServer(): McpServer {
   server.registerTool(
     "homeglo_write_file",
     {
-      description: "Write the full contents of a draft theme file. Prefer homeglo_edit_file for small changes.",
+      description:
+        "Write the full contents of a draft theme file. Prefer homeglo_edit_file for small changes.",
       inputSchema: z.object({
         path: z.string().min(1),
         content: z.string(),
@@ -200,7 +201,8 @@ function buildServer(): McpServer {
   server.registerTool(
     "homeglo_publish_draft_theme",
     {
-      description: "Publish the current draft theme to the live HomeGlo site. Use only after preview/review.",
+      description:
+        "Publish the current draft theme to the live HomeGlo site. Use only after preview/review.",
       inputSchema: z.object({
         expected_source_hash: z.string().regex(/^[a-f0-9]{64}$/).optional(),
       }),
@@ -218,7 +220,8 @@ function buildServer(): McpServer {
   server.registerTool(
     "homeglo_delete_draft_theme",
     {
-      description: "Delete the current draft theme sandbox. Does not delete the live theme.",
+      description:
+        "Delete the current draft theme sandbox. Does not delete the live theme.",
       annotations: { readOnlyHint: false, destructiveHint: true },
     },
     async () => {
@@ -242,19 +245,15 @@ function safeTokenEqual(a: string, b: string): boolean {
 function requireMcpToken(req: Request, res: Response, next: NextFunction) {
   const header = req.header("authorization") ?? "";
   const supplied = header.startsWith("Bearer ") ? header.slice(7) : "";
-  if (!safeTokenEqual(supplied, config.mcpSharedToken)) {
-    res.status(401).json({ error: "unauthorized" });
-    return;
-  }
-  next();
-}
 
-function requireAllowedHost(req: Request, res: Response, next: NextFunction) {
-  const host = (req.header("host") ?? "").toLowerCase();
-  if (!config.allowedHosts.includes(host)) {
-    res.status(403).json({ error: "host_not_allowed" });
+  if (!safeTokenEqual(supplied, config.mcpSharedToken)) {
+    res
+      .status(401)
+      .set("WWW-Authenticate", 'Bearer realm="homeglo-mcp"')
+      .json({ error: "unauthorized" });
     return;
   }
+
   next();
 }
 
@@ -271,14 +270,24 @@ app.get("/health", (_req, res) => {
   });
 });
 
-const mcpHandler = toNodeHandler(createMcpHandler(buildServer));
+app.post("/mcp", requireMcpToken, async (req, res) => {
+  const server = buildServer();
+  const transport = new NodeStreamableHTTPServerTransport({
+    sessionIdGenerator: undefined,
+  });
 
-app.all(
-  "/mcp",
-  requireAllowedHost,
-  requireMcpToken,
-  (req, res) => void mcpHandler(req, res, req.body),
-);
+  try {
+    await server.connect(transport);
+    await transport.handleRequest(req, res, req.body);
+  } catch (error) {
+    if (!res.headersSent) {
+      res.status(500).json({ error: "mcp_request_failed" });
+    }
+  } finally {
+    await transport.close().catch(() => undefined);
+    await server.close().catch(() => undefined);
+  }
+});
 
 app.listen(config.port, "0.0.0.0", () => {
   console.log(`HomeGlo MCP server listening on port ${config.port}`);
