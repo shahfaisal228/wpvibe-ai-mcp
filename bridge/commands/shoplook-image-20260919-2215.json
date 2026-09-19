@@ -1,0 +1,9 @@
+{
+  "id": "shoplook-image-20260919-2215",
+  "action": "edit_file",
+  "args": {
+    "path": "inc/homeglo-shop-look.php",
+    "old_content": "\t\t103,\n\t\t\t\t\t\t'full',\n\t\t\t\t\t\tfalse,\n\t\t\t\t\t\tarray(\n\t\t\t\t\t\t\t'loading' => 'lazy',\n\t\t\t\t\t\t\t'sizes'   => '(max-width: 760px) 100vw, 68vw',\n\t\t\t\t\t\t\t'alt'     => __( 'Modern neutral kitchen with island and bar stools', 'homeglo-atelier' ),",
+    "new_content": "\t\t161,\n\t\t\t\t\t\t'full',\n\t\t\t\t\t\tfalse,\n\t\t\t\t\t\tarray(\n\t\t\t\t\t\t\t'loading' => 'lazy',\n\t\t\t\t\t\t\t'sizes'   => '(max-width: 760px) 100vw, 68vw',\n\t\t\t\t\t\t\t'alt'     => __( 'Warm modern kitchen and dining interior for HomeGlo Shop the Look', 'homeglo-atelier' ),"
+  }
+}
