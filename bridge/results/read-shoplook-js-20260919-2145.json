@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "id": "read-shoplook-js-20260919-2145",
+  "action": "read_file",
+  "result": {
+    "path": "assets/js/homeglo-shop-look.js",
+    "content": "(function () {\n  'use strict';\n\n  function initShopLook(root) {\n    if (!root || root.dataset.hgReady === '1') return;\n    root.dataset.hgReady = '1';\n\n    const pins = Array.from(root.querySelectorAll('[data-hg-look-pin]'));\n    const cards = Array.from(root.querySelectorAll('[data-hg-look-card]'));\n    const tabs = Array.from(root.querySelectorAll('[data-hg-look-tab]'));\n\n    function activate(id, focusCard) {\n      id = String(id);\n\n      pins.forEach(function (pin) {\n        const active = String(pin.getAttribute('data-hg-look-pin')) === id;\n        pin.classList.toggle('is-active', active);\n        pin.setAttribute('aria-expanded', active ? 'true' : 'false');\n      });\n\n      tabs.forEach(function (tab) {\n        const active = String(tab.getAttribute('data-hg-look-tab')) === id;\n        tab.classList.toggle('is-active', active);\n        tab.setAttribute('aria-pressed', active ? 'true' : 'false');\n      });\n\n      cards.forEach(function (card) {\n        const active = String(card.getAttribute('data-hg-look-card')) === id;\n        card.hidden = !active;\n        card.classList.toggle('is-active', active);\n        if (active && focusCard) {\n          card.setAttribute('tabindex', '-1');\n          card.focus({ preventScroll: true });\n        }\n      });\n    }\n\n    root.addEventListener('click', function (event) {\n      const pin = event.target.closest('[data-hg-look-pin]');\n      if (pin) {\n        event.preventDefault();\n        activate(pin.getAttribute('data-hg-look-pin'), false);\n        return;\n      }\n\n      const tab = event.target.closest('[data-hg-look-tab]');\n      if (tab) {\n        event.preventDefault();\n        activate(tab.getAttribute('data-hg-look-tab'), false);\n      }\n    });\n\n    pins.forEach(function (pin, index) {\n      pin.addEventListener('keydown', function (event) {\n        if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(event.key)) return;\n        event.preventDefault();\n        const direction = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;\n        const next = pins[(index + direction + pins.length) % pins.length];\n        next.focus();\n        activate(next.getAttribute('data-hg-look-pin'), false);\n      });\n    });\n  }\n\n  function boot() {\n    document.querySelectorAll('[data-hg-hotspot-look]').forEach(initShopLook);\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', boot, { once: true });\n  } else {\n    boot();\n  }\n})();",
+    "total_lines": 74,
+    "scope": "draft",
+    "theme": "homeglo-atelier-wpvibe-draft",
+    "editable": true
+  },
+  "completed_at": "2026-09-19T11:50:47.911Z",
+  "bridge_http_status": 200
+}
