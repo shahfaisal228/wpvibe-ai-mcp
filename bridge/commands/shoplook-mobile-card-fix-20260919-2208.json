@@ -1,0 +1,9 @@
+{
+  "id": "shoplook-mobile-card-fix-20260919-2208",
+  "action": "edit_file",
+  "args": {
+    "path": "assets/css/homeglo-shop-look.css",
+    "old_content": "  .hg-hotspot-look-scene{min-height:500px;border-radius:10px}\n  .hg-hotspot-look-scene>img{object-position:center center}\n  .hg-hotspot-look-vignette{background:linear-gradient(0deg,rgba(24,20,17,.28),rgba(24,20,17,0) 52%)}\n  .hg-hotspot-look-pin{width:34px!important;height:34px!important}\n  .hg-hotspot-look-pin-label{display:none}\n  .hg-hotspot-look-card-stack{\n    position:relative;\n    left:auto;\n    bottom:auto;\n    width:100%;\n    margin-top:10px;\n  }\n",
+    "new_content": "  .hg-hotspot-look-scene{\n    min-height:500px;\n    margin-bottom:132px;\n    overflow:visible;\n    border-radius:10px;\n    background:#cfc5b9;\n  }\n  .hg-hotspot-look-scene>img{\n    object-position:center center;\n    border-radius:10px;\n  }\n  .hg-hotspot-look-vignette{\n    border-radius:10px;\n    background:linear-gradient(0deg,rgba(24,20,17,.28),rgba(24,20,17,0) 52%);\n  }\n  .hg-hotspot-look-pin{width:34px!important;height:34px!important}\n  .hg-hotspot-look-pin-label{display:none}\n  .hg-hotspot-look-card-stack{\n    position:absolute;\n    left:0;\n    bottom:-122px;\n    width:100%;\n  }\n"
+  }
+}
