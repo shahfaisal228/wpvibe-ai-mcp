@@ -6,6 +6,7 @@ import { NodeStreamableHTTPServerTransport } from "@modelcontextprotocol/node";
 import { McpServer } from "@modelcontextprotocol/server";
 import * as z from "zod/v4";
 import { config } from "./config.js";
+import { executeGitHubCommand, verifyGitHubActionsRequest } from "./github-bridge.js";
 import { WordPressClient } from "./wordpress.js";
 
 const wp = new WordPressClient(
@@ -283,6 +284,21 @@ app.get("/health/wordpress", async (_req, res) => {
       ok: false,
       wordpress: false,
       error: "wordpress_connection_failed",
+    });
+  }
+});
+
+
+app.post("/bridge/github", async (req, res) => {
+  try {
+    await verifyGitHubActionsRequest(req);
+    const result = await executeGitHubCommand(wp, req.body);
+    res.status(result.ok ? 200 : 400).json(result);
+  } catch (error) {
+    console.error("GitHub bridge request rejected:", error);
+    res.status(401).json({
+      ok: false,
+      error: "github_bridge_unauthorized",
     });
   }
 });
