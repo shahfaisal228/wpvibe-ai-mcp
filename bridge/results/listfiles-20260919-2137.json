@@ -1,0 +1,571 @@
+{
+  "ok": true,
+  "id": "listfiles-20260919-2137",
+  "action": "list_files",
+  "result": {
+    "draft_slug": "homeglo-atelier-wpvibe-draft",
+    "scope": "draft",
+    "theme": "homeglo-atelier-wpvibe-draft",
+    "editable": true,
+    "files": [
+      {
+        "path": "home.php",
+        "type": "file",
+        "size": 1454,
+        "extension": "php"
+      },
+      {
+        "path": "header.php",
+        "type": "file",
+        "size": 7187,
+        "extension": "php"
+      },
+      {
+        "path": "404.php",
+        "type": "file",
+        "size": 471,
+        "extension": "php"
+      },
+      {
+        "path": "theme.css",
+        "type": "file",
+        "size": 54500,
+        "extension": "css"
+      },
+      {
+        "path": "functions.php",
+        "type": "file",
+        "size": 50595,
+        "extension": "php"
+      },
+      {
+        "path": "template-parts",
+        "type": "directory"
+      },
+      {
+        "path": "template-parts/head.php",
+        "type": "file",
+        "size": 814,
+        "extension": "php"
+      },
+      {
+        "path": "archive.php",
+        "type": "file",
+        "size": 1918,
+        "extension": "php"
+      },
+      {
+        "path": "page-contact.php",
+        "type": "file",
+        "size": 2584,
+        "extension": "php"
+      },
+      {
+        "path": "inc",
+        "type": "directory"
+      },
+      {
+        "path": "inc/homeglo-shop-look.php",
+        "type": "file",
+        "size": 7811,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-collections.php",
+        "type": "file",
+        "size": 3969,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-bundle.php",
+        "type": "file",
+        "size": 17355,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-photo-review-preview.php",
+        "type": "file",
+        "size": 3266,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-compare.php",
+        "type": "file",
+        "size": 6906,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-product-manager.php",
+        "type": "file",
+        "size": 22816,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-stock-alerts.php",
+        "type": "file",
+        "size": 11186,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-photo-reviews.php",
+        "type": "file",
+        "size": 10778,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-room-shopping.php",
+        "type": "file",
+        "size": 6233,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-share-wishlist.php",
+        "type": "file",
+        "size": 3326,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-cart-reminder.php",
+        "type": "file",
+        "size": 20526,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-room-visualizer.php",
+        "type": "file",
+        "size": 10497,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-delivery-checker.php",
+        "type": "file",
+        "size": 10122,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-product-qa.php",
+        "type": "file",
+        "size": 18559,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-price-alerts.php",
+        "type": "file",
+        "size": 14566,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-style-quiz.php",
+        "type": "file",
+        "size": 11716,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-rewards.php",
+        "type": "file",
+        "size": 22783,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-save-later.php",
+        "type": "file",
+        "size": 6479,
+        "extension": "php"
+      },
+      {
+        "path": "inc/homeglo-quick-view.php",
+        "type": "file",
+        "size": 2822,
+        "extension": "php"
+      },
+      {
+        "path": "front-page.php",
+        "type": "file",
+        "size": 11603,
+        "extension": "php"
+      },
+      {
+        "path": "style.css",
+        "type": "file",
+        "size": 761,
+        "extension": "css"
+      },
+      {
+        "path": "single.php",
+        "type": "file",
+        "size": 2080,
+        "extension": "php"
+      },
+      {
+        "path": "dist",
+        "type": "directory"
+      },
+      {
+        "path": "searchform.php",
+        "type": "file",
+        "size": 732,
+        "extension": "php"
+      },
+      {
+        "path": "woocommerce",
+        "type": "directory"
+      },
+      {
+        "path": "woocommerce/archive-product.php",
+        "type": "file",
+        "size": 9624,
+        "extension": "php"
+      },
+      {
+        "path": "woocommerce/myaccount",
+        "type": "directory"
+      },
+      {
+        "path": "woocommerce/myaccount/navigation.php",
+        "type": "file",
+        "size": 2276,
+        "extension": "php"
+      },
+      {
+        "path": "woocommerce/myaccount/dashboard.php",
+        "type": "file",
+        "size": 10680,
+        "extension": "php"
+      },
+      {
+        "path": "woocommerce/myaccount/form-edit-address.php",
+        "type": "file",
+        "size": 6429,
+        "extension": "php"
+      },
+      {
+        "path": "assets",
+        "type": "directory"
+      },
+      {
+        "path": "assets/js",
+        "type": "directory"
+      },
+      {
+        "path": "assets/js/homeglo-delivery.js",
+        "type": "file",
+        "size": 1956,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-cart-sync.js",
+        "type": "file",
+        "size": 6522,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-product-manager.js",
+        "type": "file",
+        "size": 8386,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-style-quiz.js",
+        "type": "file",
+        "size": 6412,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-share-wishlist.js",
+        "type": "file",
+        "size": 9985,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-bundle.js",
+        "type": "file",
+        "size": 3441,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-rewards.js",
+        "type": "file",
+        "size": 1593,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-photo-review-preview.js",
+        "type": "file",
+        "size": 2708,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/alpine.min.js",
+        "type": "file",
+        "size": 46586,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-fixes.js",
+        "type": "file",
+        "size": 38754,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-compare.js",
+        "type": "file",
+        "size": 7862,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-shop-look.js",
+        "type": "file",
+        "size": 2471,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-room-visualizer.js",
+        "type": "file",
+        "size": 14581,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-photo-reviews.js",
+        "type": "file",
+        "size": 4342,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo.js",
+        "type": "file",
+        "size": 5238,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-save-later.js",
+        "type": "file",
+        "size": 9574,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-payment-preview.js",
+        "type": "file",
+        "size": 5284,
+        "extension": "js"
+      },
+      {
+        "path": "assets/js/homeglo-checkout-animation.js",
+        "type": "file",
+        "size": 2126,
+        "extension": "js"
+      },
+      {
+        "path": "assets/css",
+        "type": "directory"
+      },
+      {
+        "path": "assets/css/homeglo-payment-preview.css",
+        "type": "file",
+        "size": 11771,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-motion.css",
+        "type": "file",
+        "size": 2742,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-admin-product.css",
+        "type": "file",
+        "size": 7903,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-price-alerts.css",
+        "type": "file",
+        "size": 5053,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-photo-reviews.css",
+        "type": "file",
+        "size": 11064,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-room-visualizer.css",
+        "type": "file",
+        "size": 12805,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-commerce.css",
+        "type": "file",
+        "size": 12486,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-delivery.css",
+        "type": "file",
+        "size": 5780,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-order-received.css",
+        "type": "file",
+        "size": 12588,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-compare.css",
+        "type": "file",
+        "size": 7466,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-product-qa.css",
+        "type": "file",
+        "size": 6926,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-style-quiz.css",
+        "type": "file",
+        "size": 8735,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-admin.css",
+        "type": "file",
+        "size": 10187,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-save-later.css",
+        "type": "file",
+        "size": 4726,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-track-order.css",
+        "type": "file",
+        "size": 7631,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-account.css",
+        "type": "file",
+        "size": 24421,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-checkout-animation.css",
+        "type": "file",
+        "size": 5892,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-shop-look.css",
+        "type": "file",
+        "size": 8777,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-mobile-qa.css",
+        "type": "file",
+        "size": 8314,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-home-v2.css",
+        "type": "file",
+        "size": 15291,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-rewards.css",
+        "type": "file",
+        "size": 8623,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-bundle.css",
+        "type": "file",
+        "size": 6887,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-rooms.css",
+        "type": "file",
+        "size": 7860,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-cart-reminder.css",
+        "type": "file",
+        "size": 4502,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-share-wishlist.css",
+        "type": "file",
+        "size": 6547,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-stock-alerts.css",
+        "type": "file",
+        "size": 4434,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-fixes.css",
+        "type": "file",
+        "size": 49775,
+        "extension": "css"
+      },
+      {
+        "path": "assets/css/homeglo-reference.css",
+        "type": "file",
+        "size": 46289,
+        "extension": "css"
+      },
+      {
+        "path": "page.php",
+        "type": "file",
+        "size": 2784,
+        "extension": "php"
+      },
+      {
+        "path": "footer.php",
+        "type": "file",
+        "size": 3819,
+        "extension": "php"
+      },
+      {
+        "path": "index.php",
+        "type": "file",
+        "size": 1024,
+        "extension": "php"
+      },
+      {
+        "path": "homeglo-admin-preview.php",
+        "type": "file",
+        "size": 1605,
+        "extension": "php"
+      },
+      {
+        "path": "search.php",
+        "type": "file",
+        "size": 1271,
+        "extension": "php"
+      },
+      {
+        "path": "editor.css",
+        "type": "file",
+        "size": 1643,
+        "extension": "css"
+      }
+    ],
+    "total_files": 87,
+    "truncated": false
+  },
+  "completed_at": "2026-09-19T11:36:46.815Z",
+  "bridge_http_status": 200
+}
