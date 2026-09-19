@@ -23,7 +23,7 @@ if (sharedToken.length < 32) {
   throw new Error("MCP_SHARED_TOKEN must be at least 32 characters.");
 }
 
-const allowedHosts = (
+const explicitHosts = (
   process.env.MCP_ALLOWED_HOSTS ?? "localhost,127.0.0.1"
 )
   .split(",")
@@ -35,6 +35,11 @@ const allowedHosts = (
     }
     return value.replace(/:\d+$/, "");
   });
+
+const renderHost = process.env.RENDER_EXTERNAL_HOSTNAME?.trim().toLowerCase();
+const allowedHosts = Array.from(
+  new Set(renderHost ? [...explicitHosts, renderHost] : explicitHosts),
+);
 
 export const config = {
   wpSiteUrl: normalizeSiteUrl(required("WP_SITE_URL")),
