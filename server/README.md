@@ -71,3 +71,7 @@ The self-hosted MCP backend itself has no WPVibe quota. However, whether a ChatG
 3. Replace the hard-coded WPVibe service URLs in the WordPress fork with self-hosted configuration.
 4. Add operation receipts, our own Ed25519 approval-signing key, and rollback.
 5. Add HomeGlo/WooCommerce-specific tools after the base connector is stable.
+
+## ChatGPT Plus bridge
+
+The `homeglo-control` branch can send commands through GitHub Actions to `/bridge/github` using GitHub OIDC. This keeps HomeGlo controllable from the connected GitHub app in ChatGPT without exposing the WordPress Application Password or a static bridge secret.
