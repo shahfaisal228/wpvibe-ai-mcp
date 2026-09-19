@@ -23,16 +23,25 @@ jobs:
       - name: Checkout control branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
-      - name: Find command files in this commit
+      - name: Find pending command files
         id: commands
         shell: bash
         run: |
           set -euo pipefail
-          git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" \
-            | grep -E '^bridge/commands/[A-Za-z0-9_.-]+\.json$' \
-            > /tmp/homeglo-commands.txt || true
+          : > /tmp/homeglo-commands.txt
+          shopt -s nullglob
+          for FILE in bridge/commands/*.json; do
+            ID=$(jq -r '.id // empty' "$FILE")
+            if ! printf '%s' "$ID" | grep -Eq '^[A-Za-z0-9_.-]{1,80}$'; then
+              echo "Invalid command id in $FILE" >&2
+              exit 1
+            fi
+            if [ ! -f "bridge/results/$ID.json" ]; then
+              printf '%s\n' "$FILE" >> /tmp/homeglo-commands.txt
+            fi
+          done
           echo "count=$(wc -l < /tmp/homeglo-commands.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
 
       - name: Get GitHub OIDC token
@@ -41,9 +50,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          RESPONSE=$(curl --fail-with-body --silent --show-error \
-            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=homeglo-mcp")
+          RESPONSE=$(curl --fail-with-body --silent --show-error             -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN"             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=homeglo-mcp")
           TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.value')
           test -n "$TOKEN"
           echo "::add-mask::$TOKEN"
@@ -62,33 +69,18 @@ jobs:
             [ -n "$FILE" ] || continue
 
             ID=$(jq -r '.id' "$FILE")
-            if ! printf '%s' "$ID" | grep -Eq '^[A-Za-z0-9_.-]{1,80}$'; then
-              echo "Invalid command id in $FILE" >&2
-              exit 1
-            fi
-
             OUT="bridge/results/$ID.json"
             TMP=$(mktemp)
 
-            HTTP_CODE=$(curl --silent --show-error \
-              --max-time 180 \
-              -o "$TMP" \
-              -w '%{http_code}' \
-              -H "Authorization: Bearer $HOMEGLO_OIDC_TOKEN" \
-              -H "Content-Type: application/json" \
-              --data-binary "@$FILE" \
-              "https://homeglo-mcp.onrender.com/bridge/github" || true)
+            HTTP_CODE=$(curl --silent --show-error               --max-time 180               -o "$TMP"               -w '%{http_code}'               -H "Authorization: Bearer $HOMEGLO_OIDC_TOKEN"               -H "Content-Type: application/json"               --data-binary "@$FILE"               "https://homeglo-mcp.onrender.com/bridge/github" || true)
 
             if [ -s "$TMP" ]; then
               cp "$TMP" "$OUT"
             else
-              printf '{"ok":false,"id":"%s","error":"bridge_empty_response","http_status":"%s"}\n' \
-                "$ID" "$HTTP_CODE" > "$OUT"
+              printf '{"ok":false,"id":"%s","error":"bridge_empty_response","http_status":"%s"}\n'                 "$ID" "$HTTP_CODE" > "$OUT"
             fi
 
-            jq --arg status "$HTTP_CODE" \
-              'if type == "object" then . + {bridge_http_status: ($status|tonumber)} else . end' \
-              "$OUT" > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
+            jq --arg status "$HTTP_CODE"               'if type == "object" then . + {bridge_http_status: ($status|tonumber)} else . end'               "$OUT" > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
 
             rm -f "$TMP"
           done < /tmp/homeglo-commands.txt
@@ -105,4 +97,5 @@ jobs:
             exit 0
           fi
           git commit -m "Record HomeGlo bridge results [skip ci]"
+          git pull --rebase origin homeglo-control
           git push origin HEAD:homeglo-control
