@@ -270,6 +270,23 @@ app.get("/health", (_req, res) => {
   });
 });
 
+app.get("/health/wordpress", async (_req, res) => {
+  try {
+    await wp.get("/site-info");
+    res.json({
+      ok: true,
+      wordpress: true,
+    });
+  } catch (error) {
+    console.error("WordPress connectivity check failed:", error);
+    res.status(502).json({
+      ok: false,
+      wordpress: false,
+      error: "wordpress_connection_failed",
+    });
+  }
+});
+
 app.post("/mcp", requireMcpToken, async (req, res) => {
   const server = buildServer();
   const transport = new NodeStreamableHTTPServerTransport({
