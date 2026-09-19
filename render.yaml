@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: homeglo-mcp
+    runtime: node
+    plan: free
+    region: singapore
+    branch: homeglo-self-hosted-mcp
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: WP_SITE_URL
+        value: https://homeglo.com.au
+      - key: WP_USERNAME
+        sync: false
+      - key: WP_APP_PASSWORD
+        sync: false
+      - key: MCP_SHARED_TOKEN
+        generateValue: true
+      - key: MCP_ALLOWED_HOSTS
+        value: localhost,127.0.0.1
