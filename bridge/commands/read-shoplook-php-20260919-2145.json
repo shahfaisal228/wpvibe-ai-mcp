@@ -1,0 +1,8 @@
+{
+  "id": "read-shoplook-php-20260919-2145",
+  "action": "read_file",
+  "args": {
+    "scope": "theme",
+    "path": "inc/homeglo-shop-look.php"
+  }
+}
