@@ -1,0 +1,8 @@
+{
+  "id": "read-shoplook-css-20260919-2145",
+  "action": "read_file",
+  "args": {
+    "scope": "theme",
+    "path": "assets/css/homeglo-shop-look.css"
+  }
+}
