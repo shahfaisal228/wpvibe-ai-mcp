@@ -1,0 +1,9 @@
+{
+  "id": "shoplook-hotspots-20260919-2215",
+  "action": "edit_file",
+  "args": {
+    "path": "inc/homeglo-shop-look.php",
+    "old_content": "\t\tarray(\n\t\t\t'id'    => 140,\n\t\t\t'x'     => 58,\n\t\t\t'y'     => 61,\n\t\t\t'label' => __( 'Pantry edit', 'homeglo-atelier' ),\n\t\t),\n\t\tarray(\n\t\t\t'id'    => 139,\n\t\t\t'x'     => 39,\n\t\t\t'y'     => 55,\n\t\t\t'label' => __( 'Décor accent', 'homeglo-atelier' ),\n\t\t),\n\t\tarray(\n\t\t\t'id'    => 137,\n\t\t\t'x'     => 67,\n\t\t\t'y'     => 27,\n\t\t\t'label' => __( 'Lighting layer', 'homeglo-atelier' ),\n\t\t),",
+    "new_content": "\t\tarray(\n\t\t\t'id'    => 140,\n\t\t\t'x'     => 36,\n\t\t\t'y'     => 46,\n\t\t\t'label' => __( 'Pantry edit', 'homeglo-atelier' ),\n\t\t),\n\t\tarray(\n\t\t\t'id'    => 139,\n\t\t\t'x'     => 54,\n\t\t\t'y'     => 45,\n\t\t\t'label' => __( 'Décor accent', 'homeglo-atelier' ),\n\t\t),\n\t\tarray(\n\t\t\t'id'    => 137,\n\t\t\t'x'     => 51,\n\t\t\t'y'     => 19,\n\t\t\t'label' => __( 'Lighting layer', 'homeglo-atelier' ),\n\t\t),"
+  }
+}
