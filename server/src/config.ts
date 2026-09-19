@@ -8,7 +8,11 @@ function required(name: string): string {
 
 function normalizeSiteUrl(value: string): string {
   const url = new URL(value);
-  if (url.protocol !== "https:" && url.hostname !== "localhost" && url.hostname !== "127.0.0.1") {
+  if (
+    url.protocol !== "https:" &&
+    url.hostname !== "localhost" &&
+    url.hostname !== "127.0.0.1"
+  ) {
     throw new Error("WP_SITE_URL must use HTTPS for a remote WordPress site.");
   }
   return url.toString().replace(/\/$/, "");
@@ -19,10 +23,18 @@ if (sharedToken.length < 32) {
   throw new Error("MCP_SHARED_TOKEN must be at least 32 characters.");
 }
 
-const allowedHosts = (process.env.MCP_ALLOWED_HOSTS ?? "localhost:3000,127.0.0.1:3000")
+const allowedHosts = (
+  process.env.MCP_ALLOWED_HOSTS ?? "localhost,127.0.0.1"
+)
   .split(",")
   .map((value) => value.trim().toLowerCase())
-  .filter(Boolean);
+  .filter(Boolean)
+  .map((value) => {
+    if (value.includes("://")) {
+      return new URL(value).hostname.toLowerCase();
+    }
+    return value.replace(/:\d+$/, "");
+  });
 
 export const config = {
   wpSiteUrl: normalizeSiteUrl(required("WP_SITE_URL")),
