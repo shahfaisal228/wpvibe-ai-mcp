@@ -1,0 +1,108 @@
+name: HomeGlo ChatGPT Bridge
+
+on:
+  push:
+    branches:
+      - homeglo-control
+    paths:
+      - "bridge/commands/*.json"
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: homeglo-chatgpt-bridge
+  cancel-in-progress: false
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout control branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find command files in this commit
+        id: commands
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" \
+            | grep -E '^bridge/commands/[A-Za-z0-9_.-]+\.json$' \
+            > /tmp/homeglo-commands.txt || true
+          echo "count=$(wc -l < /tmp/homeglo-commands.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: Get GitHub OIDC token
+        if: steps.commands.outputs.count != '0'
+        id: oidc
+        shell: bash
+        run: |
+          set -euo pipefail
+          RESPONSE=$(curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=homeglo-mcp")
+          TOKEN=$(printf '%s' "$RESPONSE" | jq -r '.value')
+          test -n "$TOKEN"
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Execute HomeGlo commands
+        if: steps.commands.outputs.count != '0'
+        env:
+          HOMEGLO_OIDC_TOKEN: ${{ steps.oidc.outputs.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p bridge/results
+
+          while IFS= read -r FILE; do
+            [ -n "$FILE" ] || continue
+
+            ID=$(jq -r '.id' "$FILE")
+            if ! printf '%s' "$ID" | grep -Eq '^[A-Za-z0-9_.-]{1,80}$'; then
+              echo "Invalid command id in $FILE" >&2
+              exit 1
+            fi
+
+            OUT="bridge/results/$ID.json"
+            TMP=$(mktemp)
+
+            HTTP_CODE=$(curl --silent --show-error \
+              --max-time 180 \
+              -o "$TMP" \
+              -w '%{http_code}' \
+              -H "Authorization: Bearer $HOMEGLO_OIDC_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data-binary "@$FILE" \
+              "https://homeglo-mcp.onrender.com/bridge/github" || true)
+
+            if [ -s "$TMP" ]; then
+              cp "$TMP" "$OUT"
+            else
+              printf '{"ok":false,"id":"%s","error":"bridge_empty_response","http_status":"%s"}\n' \
+                "$ID" "$HTTP_CODE" > "$OUT"
+            fi
+
+            jq --arg status "$HTTP_CODE" \
+              'if type == "object" then . + {bridge_http_status: ($status|tonumber)} else . end' \
+              "$OUT" > "$OUT.tmp" && mv "$OUT.tmp" "$OUT"
+
+            rm -f "$TMP"
+          done < /tmp/homeglo-commands.txt
+
+      - name: Commit command results
+        if: steps.commands.outputs.count != '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "homeglo-bridge-bot"
+          git config user.email "homeglo-bridge-bot@users.noreply.github.com"
+          git add bridge/results
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record HomeGlo bridge results [skip ci]"
+          git push origin HEAD:homeglo-control
