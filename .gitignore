@@ -20,9 +20,15 @@ desktop.ini
 *.log
 npm-debug.log*
 
-# Dependencies (none expected in plugin, but just in case)
+# Dependencies
 node_modules/
 vendor/
+
+# Local secrets / environment
+.env
+.env.*
+!.env.example
+server/.env
 
 # Test artifacts
 coverage/
