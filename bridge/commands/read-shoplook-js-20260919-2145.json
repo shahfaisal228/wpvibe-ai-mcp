@@ -1,0 +1,8 @@
+{
+  "id": "read-shoplook-js-20260919-2145",
+  "action": "read_file",
+  "args": {
+    "scope": "theme",
+    "path": "assets/js/homeglo-shop-look.js"
+  }
+}
