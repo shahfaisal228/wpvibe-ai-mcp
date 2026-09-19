@@ -1,0 +1,8 @@
+{
+  "id": "read-frontpage-20260919-2145",
+  "action": "read_file",
+  "args": {
+    "scope": "theme",
+    "path": "front-page.php"
+  }
+}
