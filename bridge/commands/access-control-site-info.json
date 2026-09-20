@@ -1,0 +1,5 @@
+{
+  "id": "access-control-site-info",
+  "action": "site_info",
+  "args": {}
+}
