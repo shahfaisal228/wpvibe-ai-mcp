@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "id": "ac-welcome-permissions",
+  "action": "edit_file",
+  "result": {
+    "path": "inc/homeglo-manager-portal.php",
+    "status": "edited",
+    "message": "File updated successfully."
+  },
+  "completed_at": "2026-09-20T18:01:53.708Z",
+  "bridge_http_status": 200
+}
