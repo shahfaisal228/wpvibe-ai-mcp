@@ -1,0 +1,9 @@
+{
+  "id": "ac-log-mobile-css",
+  "action": "edit_file",
+  "args": {
+    "path": "assets/css/homeglo-manager-portal.css",
+    "old_content": "@media(max-width:520px){.hg-manager-quick-actions{grid-template-columns:1fr}.hg-manager-customer-row{grid-template-columns:38px 1fr}.hg-manager-inline-action{grid-column:2;justify-content:flex-start}.hg-manager-staff-list>div{grid-template-columns:1fr}.hg-manager-staff-actions{grid-column:1;grid-row:auto;flex-direction:row;justify-content:flex-start}.hg-manager-staff-you{justify-self:start}}",
+    "new_content": "@media(max-width:900px){.hg-manager-log-list{overflow-x:auto}.hg-manager-log-head,.hg-manager-log-row{min-width:760px}.hg-manager-log-filters label{min-width:150px}}\n@media(max-width:520px){.hg-manager-quick-actions{grid-template-columns:1fr}.hg-manager-customer-row{grid-template-columns:38px 1fr}.hg-manager-inline-action{grid-column:2;justify-content:flex-start}.hg-manager-staff-list>div{grid-template-columns:1fr}.hg-manager-staff-actions{grid-column:1;grid-row:auto;flex-direction:row;justify-content:flex-start}.hg-manager-staff-you{justify-self:start}.hg-manager-permission-grid{grid-template-columns:1fr}.hg-manager-log-filters{align-items:stretch;flex-direction:column}.hg-manager-log-filters label{min-width:0}.hg-manager-log-filters button,.hg-manager-log-filters a{width:100%}}"
+  }
+}
