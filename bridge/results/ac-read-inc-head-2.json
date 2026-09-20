@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "id": "ac-read-inc-head-2",
+  "action": "read_file",
+  "error": "WordPress network request failed for https://homeglo.com.au: fetch failed | cause: {\"stack\":\"Error: 40731DE1CF7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:918:SSL alert number 80\\n\",\"message\":\"40731DE1CF7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:918:SSL alert number 80\\n\",\"library\":\"SSL routines\",\"reason\":\"tlsv1 alert internal error\",\"code\":\"ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR\"}",
+  "completed_at": "2026-09-20T17:59:53.602Z",
+  "bridge_http_status": 400
+}
