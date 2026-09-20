@@ -1,0 +1,9 @@
+{
+  "id": "ac-dashboard-denied-alert",
+  "action": "edit_file",
+  "args": {
+    "path": "homeglo-manager-portal.php",
+    "old_content": "\t\t\t\t<section class=\"hg-manager-page-head\">\n\t\t\t\t\t<div><p>HOMEGLO MANAGEMENT</p><h1>Good to see you.</h1><span>Everything the manager needs, without WordPress.</span></div>",
+    "new_content": "\t\t\t\t<section class=\"hg-manager-page-head\">\n\t\t\t\t\t<div><p>HOMEGLO MANAGEMENT</p><h1>Good to see you.</h1><span>Everything the manager needs, without WordPress.</span></div>"
+  }
+}
