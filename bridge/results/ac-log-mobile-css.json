@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "id": "ac-log-mobile-css",
+  "action": "edit_file",
+  "error": "WordPress request failed (422) old_content not found in file.",
+  "completed_at": "2026-09-20T18:02:52.895Z",
+  "bridge_http_status": 400
+}
