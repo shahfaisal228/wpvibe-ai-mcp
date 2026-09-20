@@ -1,0 +1,10 @@
+{
+  "id": "ac-read-template",
+  "action": "read_file",
+  "args": {
+    "scope": "theme",
+    "path": "homeglo-manager-portal.php",
+    "start_line": 150,
+    "end_line": 706
+  }
+}
