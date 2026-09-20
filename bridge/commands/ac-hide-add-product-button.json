@@ -1,0 +1,9 @@
+{
+  "id": "ac-hide-add-product-button",
+  "action": "edit_file",
+  "args": {
+    "path": "homeglo-manager-portal.php",
+    "old_content": "<section class=\"hg-manager-page-head\"><div><p>CATALOGUE</p><h1>Products</h1><span>View HomeGlo prices, supplier costs and stock from the manager portal.</span></div><a class=\"hg-manager-primary\" href=\"<?php echo esc_url( homeglo_manager_url( 'add-product' ) ); ?>\">Add product <span>＋</span></a></section>",
+    "new_content": "<section class=\"hg-manager-page-head\"><div><p>CATALOGUE</p><h1>Products</h1><span>View HomeGlo prices, supplier costs and stock from the manager portal.</span></div><?php if ( homeglo_manager_can( 'add_product', $manager ) ) : ?><a class=\"hg-manager-primary\" href=\"<?php echo esc_url( homeglo_manager_url( 'add-product' ) ); ?>\">Add product <span>＋</span></a><?php endif; ?></section>"
+  }
+}
