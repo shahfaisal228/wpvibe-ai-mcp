@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { timingSafeEqual } from "node:crypto";
+import { setDefaultResultOrder } from "node:dns";
 import type { NextFunction, Request, Response } from "express";
 import { createMcpExpressApp } from "@modelcontextprotocol/express";
 import { NodeStreamableHTTPServerTransport } from "@modelcontextprotocol/node";
@@ -8,6 +9,8 @@ import * as z from "zod/v4";
 import { config } from "./config.js";
 import { executeGitHubCommand, verifyGitHubActionsRequest } from "./github-bridge.js";
 import { WordPressClient } from "./wordpress.js";
+
+setDefaultResultOrder("ipv4first");
 
 const wp = new WordPressClient(
   config.wpSiteUrl,
