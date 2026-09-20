@@ -1,0 +1,10 @@
+{
+  "id": "ac-reread-css-tail",
+  "action": "read_file",
+  "args": {
+    "scope": "theme",
+    "path": "assets/css/homeglo-manager-portal.css",
+    "start_line": 245,
+    "end_line": 310
+  }
+}
