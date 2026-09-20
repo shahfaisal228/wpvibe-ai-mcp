@@ -55,12 +55,26 @@ export class WordPressClient {
     headers.set("X-WPVIBE", "1");
     headers.set("Accept", "application/json");
 
-    const response = await fetch(url, {
-      ...init,
-      headers,
-      redirect: "manual",
-      signal: AbortSignal.timeout(30_000),
-    });
+    let response: Response;
+    try {
+      response = await fetch(url, {
+        ...init,
+        headers,
+        redirect: "manual",
+        signal: AbortSignal.timeout(30_000),
+      });
+    } catch (error) {
+      const cause = error && typeof error === "object" && "cause" in error
+        ? (error as { cause?: unknown }).cause
+        : undefined;
+      const causeMessage =
+        cause && typeof cause === "object"
+          ? JSON.stringify(cause, Object.getOwnPropertyNames(cause))
+          : String(cause ?? "");
+      throw new Error(
+        `WordPress network request failed for ${url.origin}: ${error instanceof Error ? error.message : String(error)}${causeMessage ? ` | cause: ${causeMessage}` : ""}`,
+      );
+    }
 
     const raw = await response.text();
     let payload: JsonValue;
