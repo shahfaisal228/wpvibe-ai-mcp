@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "id": "shoplook-preview-20260919-2215",
+  "action": "preview_draft",
+  "error": "fetch failed",
+  "completed_at": "2026-09-20T17:55:27.776Z",
+  "bridge_http_status": 400
+}

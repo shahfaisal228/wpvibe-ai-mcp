@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "id": "access-control-site-info",
+  "action": "site_info",
+  "error": "fetch failed",
+  "completed_at": "2026-09-20T17:55:26.620Z",
+  "bridge_http_status": 400
+}
