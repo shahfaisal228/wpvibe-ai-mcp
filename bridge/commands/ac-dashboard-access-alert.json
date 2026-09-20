@@ -1,0 +1,9 @@
+{
+  "id": "ac-dashboard-access-alert",
+  "action": "edit_file",
+  "args": {
+    "path": "homeglo-manager-portal.php",
+    "old_content": "\t\t\t\t\t<div class=\"hg-manager-head-actions\"><?php if ( homeglo_manager_can( 'orders', $manager ) ) : ?><a class=\"hg-manager-primary is-light\" href=\"<?php echo esc_url( homeglo_manager_url( 'orders' ) ); ?>\">Open orders</a><?php endif; ?><?php if ( homeglo_manager_can( 'add_product', $manager ) ) : ?><a class=\"hg-manager-primary\" href=\"<?php echo esc_url( homeglo_manager_url( 'add-product' ) ); ?>\">Add product <span>＋</span></a><?php endif; ?></div>\n\t\t\t\t</section>\n\t\t\t\t<div class=\"hg-manager-stats\">",
+    "new_content": "\t\t\t\t\t<div class=\"hg-manager-head-actions\"><?php if ( homeglo_manager_can( 'orders', $manager ) ) : ?><a class=\"hg-manager-primary is-light\" href=\"<?php echo esc_url( homeglo_manager_url( 'orders' ) ); ?>\">Open orders</a><?php endif; ?><?php if ( homeglo_manager_can( 'add_product', $manager ) ) : ?><a class=\"hg-manager-primary\" href=\"<?php echo esc_url( homeglo_manager_url( 'add-product' ) ); ?>\">Add product <span>＋</span></a><?php endif; ?></div>\n\t\t\t\t</section>\n\t\t\t\t<?php if ( ! empty( $_GET['denied'] ) ) : ?><div class=\"hg-manager-alert is-error\">You do not have permission to open that HomeGlo area. Ask an Admin/Owner if you need access.</div><?php endif; ?>\n\t\t\t\t<div class=\"hg-manager-stats\">"
+  }
+}
