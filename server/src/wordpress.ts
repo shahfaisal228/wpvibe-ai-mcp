@@ -55,15 +55,28 @@ export class WordPressClient {
     headers.set("X-WPVIBE", "1");
     headers.set("Accept", "application/json");
 
-    let response: Response;
-    try {
-      response = await fetch(url, {
-        ...init,
-        headers,
-        redirect: "manual",
-        signal: AbortSignal.timeout(30_000),
-      });
-    } catch (error) {
+    let response: Response | undefined;
+    let lastNetworkError: unknown;
+
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
+      try {
+        response = await fetch(url, {
+          ...init,
+          headers,
+          redirect: "manual",
+          signal: AbortSignal.timeout(30_000),
+        });
+        break;
+      } catch (error) {
+        lastNetworkError = error;
+        if (attempt < 3) {
+          await new Promise((resolve) => setTimeout(resolve, 700 * attempt));
+        }
+      }
+    }
+
+    if (!response) {
+      const error = lastNetworkError;
       const cause = error && typeof error === "object" && "cause" in error
         ? (error as { cause?: unknown }).cause
         : undefined;
@@ -72,7 +85,7 @@ export class WordPressClient {
           ? JSON.stringify(cause, Object.getOwnPropertyNames(cause))
           : String(cause ?? "");
       throw new Error(
-        `WordPress network request failed for ${url.origin}: ${error instanceof Error ? error.message : String(error)}${causeMessage ? ` | cause: ${causeMessage}` : ""}`,
+        `WordPress network request failed after 3 attempts for ${url.origin}: ${error instanceof Error ? error.message : String(error)}${causeMessage ? ` | cause: ${causeMessage}` : ""}`,
       );
     }
 
