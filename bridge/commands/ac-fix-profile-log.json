@@ -1,0 +1,9 @@
+{
+  "id": "ac-fix-profile-log",
+  "action": "edit_file",
+  "args": {
+    "path": "inc/homeglo-manager-portal.php",
+    "old_content": "\t\thomeglo_manager_log( 'profile_updated', 'Updated own HomeGlo profile.', 'staff', absint( $manager->id ) );\n\t\thomeglo_manager_log( 'profile_updated', 'Updated own HomeGlo profile.', 'staff', absint( $manager->id ) );",
+    "new_content": "\t\thomeglo_manager_log( 'profile_updated', 'Updated own HomeGlo profile.', 'staff', absint( $manager->id ) );"
+  }
+}
