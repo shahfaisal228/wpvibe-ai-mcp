@@ -1,0 +1,9 @@
+{
+  "id": "ac-welcome-permissions",
+  "action": "edit_file",
+  "args": {
+    "path": "inc/homeglo-manager-portal.php",
+    "old_content": "\t\t\t$role_label = 'owner' === $role ? 'Admin / Owner' : 'Manager';\n\t\t\t$subject = 'Welcome to HomeGlo — your ' . $role_label . ' account';\n\t\t\t$body = '<div style=\"font-family:Arial,sans-serif;max-width:620px;margin:auto;color:#2b2622\">'\n\t\t\t\t. '<h2 style=\"margin-bottom:8px\">Welcome to HomeGlo</h2>'\n\t\t\t\t. '<p>Your HomeGlo ' . esc_html( $role_label ) . ' account has been created.</p>'\n\t\t\t\t. '<p><strong>Username:</strong> ' . esc_html( $username ) . '<br><strong>Role:</strong> ' . esc_html( $role_label ) . '</p>'",
+    "new_content": "\t\t\t$role_label = 'owner' === $role ? 'Admin / Owner' : 'Manager';\n\t\t\t$access_label = 'owner' === $role ? 'Full HomeGlo management access' : ( $permission_labels ? implode( ', ', $permission_labels ) : 'Dashboard and profile only' );\n\t\t\t$subject = 'Welcome to HomeGlo — your ' . $role_label . ' account';\n\t\t\t$body = '<div style=\"font-family:Arial,sans-serif;max-width:620px;margin:auto;color:#2b2622\">'\n\t\t\t\t. '<h2 style=\"margin-bottom:8px\">Welcome to HomeGlo</h2>'\n\t\t\t\t. '<p>Your HomeGlo ' . esc_html( $role_label ) . ' account has been created.</p>'\n\t\t\t\t. '<p><strong>Username:</strong> ' . esc_html( $username ) . '<br><strong>Role:</strong> ' . esc_html( $role_label ) . '<br><strong>Access:</strong> ' . esc_html( $access_label ) . '</p>'"
+  }
+}
