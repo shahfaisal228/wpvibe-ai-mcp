@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "id": "ac-check-typo",
+  "action": "search_files",
+  "result": {
+    "pattern": "h homeglo_manager_ensure_table",
+    "scope": "draft",
+    "theme": "homeglo-atelier-wpvibe-draft",
+    "editable": true,
+    "matches": [],
+    "total_matches": 0,
+    "files_searched": 45,
+    "truncated": false
+  },
+  "completed_at": "2026-09-21T14:06:21.933Z",
+  "bridge_http_status": 200
+}
