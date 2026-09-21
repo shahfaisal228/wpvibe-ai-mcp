@@ -1,0 +1,12 @@
+{
+  "id": "ac-check-profile-log",
+  "action": "search_files",
+  "args": {
+    "pattern": "homeglo_manager_log( 'profile_updated'",
+    "case_sensitive": true,
+    "extensions": [
+      "php"
+    ],
+    "max_results": 20
+  }
+}
