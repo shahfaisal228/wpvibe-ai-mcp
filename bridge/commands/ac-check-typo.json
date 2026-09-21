@@ -1,0 +1,12 @@
+{
+  "id": "ac-check-typo",
+  "action": "search_files",
+  "args": {
+    "pattern": "h homeglo_manager_ensure_table",
+    "case_sensitive": true,
+    "extensions": [
+      "php"
+    ],
+    "max_results": 20
+  }
+}
