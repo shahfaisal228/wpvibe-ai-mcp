@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "id": "ac-check-profile-log",
+  "action": "search_files",
+  "result": {
+    "pattern": "homeglo_manager_log( 'profile_updated'",
+    "scope": "draft",
+    "theme": "homeglo-atelier-wpvibe-draft",
+    "editable": true,
+    "matches": [
+      {
+        "file": "inc/homeglo-manager-portal.php",
+        "line": 886,
+        "content": "homeglo_manager_log( 'profile_updated', 'Updated own HomeGlo profile.', 'staff', absint( $manager->id ) );",
+        "context_before": "",
+        "context_after": "wp_safe_redirect( homeglo_manager_url( 'profile', array( 'saved' => '1' ) ) );"
+      }
+    ],
+    "total_matches": 1,
+    "files_searched": 45,
+    "truncated": false
+  },
+  "completed_at": "2026-09-21T14:06:56.840Z",
+  "bridge_http_status": 200
+}

@@ -1,0 +1,90 @@
+{
+  "ok": true,
+  "id": "ac-pump-3",
+  "action": "site_info",
+  "result": {
+    "connected_user": {
+      "login": "faisalgaloch",
+      "roles": [
+        "administrator"
+      ],
+      "caps": {
+        "manage_options": true,
+        "edit_theme_options": true,
+        "edit_posts": true,
+        "publish_posts": true,
+        "upload_files": true,
+        "activate_plugins": true
+      }
+    },
+    "site_name": "HomeGlo",
+    "wp_version": "7.1.1",
+    "php_version": "8.3.33",
+    "wpvibe_plugin_version": "1.17.3",
+    "features": [
+      "content_edit",
+      "content_search",
+      "code_snippet",
+      "beaver_save",
+      "breakdance_save",
+      "bricks_save",
+      "armor",
+      "authorize_mint",
+      "op_proof",
+      "op_proof_v2",
+      "detached_ops",
+      "connection_readiness",
+      "connection_status"
+    ],
+    "active_theme": {
+      "name": "homeglo-atelier",
+      "stylesheet": "homeglo-atelier",
+      "version": "1.0.0",
+      "wpvibe_authored": true,
+      "uses_tailwind": true,
+      "templates_present": [
+        "index.php",
+        "header.php",
+        "footer.php",
+        "functions.php",
+        "style.css",
+        "front-page.php",
+        "home.php",
+        "single.php",
+        "page.php",
+        "archive.php",
+        "404.php",
+        "search.php"
+      ],
+      "templates_missing": []
+    },
+    "plugins": [
+      "all-in-one-seo-pack/all_in_one_seo_pack.php",
+      "contact-form-7/wp-contact-form-7.php",
+      "easy-wp-smtp/easy-wp-smtp.php",
+      "elementor/elementor.php",
+      "hostinger-easy-onboarding/hostinger-easy-onboarding.php",
+      "hostinger-reach/hostinger-reach.php",
+      "hostinger/hostinger.php",
+      "ninja-forms/ninja-forms.php",
+      "google-site-kit/google-site-kit.php",
+      "woocommerce/woocommerce.php",
+      "woocommerce-payments/woocommerce-payments.php",
+      "wpforms-lite/wpforms.php",
+      "vibe-ai/vibe-ai.php"
+    ],
+    "themes": [
+      "homeglo-atelier-wpvibe-backup",
+      "homeglo-atelier-wpvibe-draft",
+      "homeglo-atelier",
+      "homeglo",
+      "twentytwentyfive",
+      "twentytwentyfour",
+      "twentytwentythree"
+    ],
+    "wp_cli_available": true,
+    "wp_cli_version": null
+  },
+  "completed_at": "2026-09-21T14:06:57.566Z",
+  "bridge_http_status": 200
+}
